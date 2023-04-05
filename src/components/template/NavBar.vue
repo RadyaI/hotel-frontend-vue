@@ -17,7 +17,7 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav  mx-auto ">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                             </li>
                             <li class="nav-item">
@@ -99,7 +99,7 @@
                                 </button>
                             </form>
                             <a href="" class="order_online">
-                                Order Online
+                                Booking Online
                             </a>
                         </div>
                     </div>
