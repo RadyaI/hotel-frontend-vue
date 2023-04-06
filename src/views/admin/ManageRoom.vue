@@ -51,23 +51,23 @@
                                             <g>
                                                 <path
                                                     d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                                                                                                                                                                                                                           c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                                                                                                                                                                                                                               c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                                                                                                                                                                                                                           C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                                                                                                                                                                                                                           c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                                                                                                                                                                                                                           C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                                                                                                                                                                                                                               C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                                                                                                                                                                                                                                               c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                                                                                                                                                                                                                                               C457.728,97.71,450.56,86.958,439.296,84.91z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                                                                                                                                                                                                                           c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                                                                                                                                                                                                                               c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                             </g>
                                         </g>
                                         <g>
@@ -195,78 +195,13 @@
                                                 <h6>
                                                     Harga: Rp.{{ room.harga }} / Malam
                                                 </h6>
-                                                <a href="">
-                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 456.029 456.029"
-                                                        style="enable-background:new 0 0 456.029 456.029;"
-                                                        xml:space="preserve">
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                                                                 c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                                                                 C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                                                                 c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                                                                 C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                                                                 c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                    </svg>
-                                                </a>
+                                                <a href="#" style="background-color: white;" class="btn"><i class="bi bi-gear-fill"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="btn-box">
-                        <a href="">
-                            View More
-                        </a>
                     </div>
                 </div>
             </section>
@@ -291,31 +226,31 @@
                     <form @submit.prevent="save">
                         <div class="modal-body">
                             <label for="nomor">Nomor kamar:</label>
-                            <input type="number" id="nomor" class="form-control" v-model="nomor_kamar"
+                            <input type="number" id="nomor" class="form-control" v-model="room.nomor_kamar"
                                 placeholder="Masukkan nomor kamar..." required>
 
                             <label for="room">type:</label>
-                            <select v-model="type_kamar" id="room" required class="form-control">
+                            <select v-model="room.type_kamar" id="room" required class="form-control">
                                 <option value="regular">Reqular</option>
                                 <option value="premium">Premium</option>
                                 <option value="sultan">Sultan</option>
                             </select>
 
-                            <label for="foto">Foto:</label>
-                            <input id="foto" type="file" v-on:change="inputFile($event)" class="form-control">
+                            <!-- <label for="foto">Foto:</label>
+                            <input id="foto" type="file" v-on:change="inputFile($event)" class="form-control"> -->
 
                             <label for="deskripsi">Deskripsi:</label>
-                            <input type="text" id="deskripsi" class="form-control" v-model="deskripsi" autocomplete="off">
+                            <input type="text" id="deskripsi" class="form-control" v-model="room.deskripsi" autocomplete="off">
 
                             <label for="status">Status:</label>
-                            <select v-model="status_kamar" id="status" required class="form-control">
+                            <select v-model="room.status_kamar" id="status" required class="form-control">
                                 <option value="kosong">kosong</option>
                                 <option value="dipesan">dipesan</option>
                                 <option value="dibersihkan">dibersihkan</option>
                             </select>
 
                             <label for="harga">Harga:</label>
-                            <input type="number" class="form-control" v-model="harga" required
+                            <input type="number" class="form-control" v-model="room.harga" required
                                 placeholder="Masukkan harga...">
                         </div>
                         <div class="modal-footer">
@@ -346,7 +281,7 @@ export default {
     data() {
         return {
             data_room: {},
-            // room: {},
+            room: {},
             nomor_kamar: '',
             type_kamar: '',
             harga: '',
@@ -362,23 +297,19 @@ export default {
         // this.data_edit()
     },
     methods: {
-        inputFile: function (event) {
+        inputFile(event) {
             this.file = event.target.files[0];
         },
         save() {
-            var formdata = new FormData();
-            formdata.append('nomor_kamar', this.nomor_kamar)
-            formdata.append('type_kamar', this.type_kamar)
-            formdata.append('status_kamar', this.status_kamar)
-            formdata.append('deskripsi', this.deskripsi)
-            formdata.append('foto', this.file)
-            formdata.append('harga', this.harga)
+            // var formdata = new FormData();
+            // formdata.append('nomor_kamar', this.nomor_kamar)
+            // formdata.append('type_kamar', this.type_kamar)
+            // formdata.append('status_kamar', this.status_kamar)
+            // formdata.append('deskripsi', this.deskripsi)        
+            // formdata.append('file', this.file)
+            // formdata.append('harga', this.harga)
 
-            axios.post('http://localhost:8000/api/createkamar', formdata, {
-                headers: {
-                    'Content-type': 'multipart/form-data'
-                }
-            })
+            axios.post('http://localhost:8000/api/createkamar', this.room)
                 .then(
                     ({ data }) => {
                         console.log(data)
