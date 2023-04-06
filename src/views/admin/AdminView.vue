@@ -149,11 +149,11 @@
                                 <a class="nav-link" href="/user">User</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/manage_room">manage room</a>
+                                <a class="nav-link" href="/manageroom">manage room</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="/edit_room">Edit Room</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </nav>
