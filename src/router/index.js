@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import HomeView from '../views/HomeView.vue'
 import indexhome from '../views/IndexHome.vue'
+import room from '../views/RoomView.vue'
 import notfound from '../views/NotFound.vue'
 import admin from '../views/admin/AdminView.vue'
 import manageroom from '../views/admin/ManageRoom.vue'
@@ -19,6 +20,10 @@ const routes = [
   {
     path: '/manageroom',
     component: manageroom
+  },
+  {
+    path: '/room',
+    component: room
   },
   {
     path: '*',

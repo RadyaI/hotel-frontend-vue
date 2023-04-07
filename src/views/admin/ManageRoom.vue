@@ -192,6 +192,7 @@
                                             <p>
                                                 Type: {{ room.type_kamar }}
                                             </p>
+                                            <span><small>Max: {{ room.max }} person</small></span>
                                             <div class="options">
                                                 <h6>
                                                     Harga: Rp.{{ room.harga }} / Malam
@@ -242,6 +243,12 @@
                                 <option value="sultan">Sultan</option>
                             </select>
 
+                            <label for="max">Max</label>
+                            <select v-model="room.max" id="max" required class="form-control">
+                            <option value="1-2">1-2</option>
+                            <option value="2-4">2-4</option>
+                            </select>
+
                             <!-- <label for="foto">Foto:</label>
                             <input id="foto" type="file" v-on:change="inputFile($event)" class="form-control"> -->
 
@@ -275,7 +282,7 @@
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-family: 'Times New Roman';">Manage
+                        <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-family: 'Times New Roman',;">Manage
                             Room</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -290,6 +297,12 @@
                                 <option value="regular">Regular</option>
                                 <option value="premium">Premium</option>
                                 <option value="sultan">Sultan</option>
+                            </select>
+
+                            <label for="max">Max</label>
+                            <select v-model="max" id="max" required class="form-control">
+                            <option value="1-2">1-2</option>
+                            <option value="2-4">2-4</option>
                             </select>
 
                             <label for="status">Status Kamar:</label>
@@ -337,7 +350,8 @@ export default {
             harga: '',
             status_kamar: '',
             deskripsi: '',
-            foto: ''
+            foto: '',
+            max: ''
         }
     },
     created() {
@@ -399,6 +413,7 @@ export default {
                         this.id_kamar = response.data[0].id_kamar
                         this.nomor_kamar = response.data[0].nomor_kamar
                         this.type_kamar = response.data[0].type_kamar
+                        this.max = response.data[0].max
                         this.harga = response.data[0].harga
                         this.status_kamar = response.data[0].status_kamar
                         this.deskripsi = response.data[0].deskripsi
@@ -415,6 +430,7 @@ export default {
                 harga: this.harga,
                 status_kamar: this.status_kamar,
                 deskripsi: this.deskripsi,
+                max: this.max,
             }
             axios.put('http://localhost:8000/api/updatekamar/' + this.id_kamar, kamar)
                 .then(
