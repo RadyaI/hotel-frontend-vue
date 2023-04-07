@@ -240,7 +240,7 @@
                             <select v-model="room.type_kamar" id="room" required class="form-control">
                                 <option value="Regular">Regular</option>
                                 <option value="Premium">Premium</option>
-                                <option value="Superior">Sultan</option>
+                                <option value="Superior">Superior</option>
                                 <option value="Duluxe">Duluxe</option>
                                 <option value="Executive">Executive</option>
                                 <option value="Family">Family</option>
@@ -300,7 +300,7 @@
                             <select v-model="type_kamar" required id="type" class="form-control">
                                 <option value="Regular">Regular</option>
                                 <option value="Premium">Premium</option>
-                                <option value="Superior">Sultan</option>
+                                <option value="Superior">Superior</option>
                                 <option value="Duluxe">Duluxe</option>
                                 <option value="Executive">Executive</option>
                                 <option value="Family">Family</option>
