@@ -187,10 +187,10 @@
                                         </div>
                                         <div class="detail-box">
                                             <h5>
-                                                Nomor: {{ room.nomor_kamar }}
+                                                <!-- Nomor: {{ room.nomor_kamar }} -->
                                             </h5>
                                             <p>
-                                                Type: {{ room.type_kamar }}
+                                                Type: {{ room.type_kamar }} / <span v-if="room.status_kamar !== 'kosong'" class="badge badge-danger">Unavailable</span><span v-else class="badge badge-success">Available</span>
                                             </p>
                                             <span><small>Max: {{ room.max }} person</small></span>
                                             <div class="options">
@@ -232,15 +232,19 @@
                     </div>
                     <form @submit.prevent="save">
                         <div class="modal-body">
-                            <label for="nomor">Nomor kamar:</label>
+                            <!-- <label for="nomor">Nomor kamar:</label>
                             <input type="number" id="nomor" class="form-control" v-model="room.nomor_kamar"
-                                placeholder="Masukkan nomor kamar..." required>
+                                placeholder="Masukkan nomor kamar..." required> -->
 
                             <label for="room">type:</label>
                             <select v-model="room.type_kamar" id="room" required class="form-control">
-                                <option value="regular">Reqular</option>
-                                <option value="premium">Premium</option>
-                                <option value="sultan">Sultan</option>
+                                <option value="Regular">Regular</option>
+                                <option value="Premium">Premium</option>
+                                <option value="Superior">Sultan</option>
+                                <option value="Duluxe">Duluxe</option>
+                                <option value="Executive">Executive</option>
+                                <option value="Family">Family</option>
+                                <option value="Single">Single</option>
                             </select>
 
                             <label for="max">Max</label>
@@ -289,14 +293,18 @@
                     <form @submit.prevent="editkamar">
                         <div class="modal-body">
                             <input type="hidden" v-model="id_kamar">
-                            <label for="nomor_kamar">Nomor Kamar:</label>
-                            <input type="text" required class="form-control" v-model="nomor_kamar" autocomplete="off">
+                            <!-- <label for="nomor_kamar">Nomor Kamar:</label>
+                            <input type="text" required class="form-control" v-model="nomor_kamar" autocomplete="off"> -->
 
                             <label for="type">Type Kamar:</label>
                             <select v-model="type_kamar" required id="type" class="form-control">
-                                <option value="regular">Regular</option>
-                                <option value="premium">Premium</option>
-                                <option value="sultan">Sultan</option>
+                                <option value="Regular">Regular</option>
+                                <option value="Premium">Premium</option>
+                                <option value="Superior">Sultan</option>
+                                <option value="Duluxe">Duluxe</option>
+                                <option value="Executive">Executive</option>
+                                <option value="Family">Family</option>
+                                <option value="Single">Single</option>
                             </select>
 
                             <label for="max">Max</label>
@@ -345,7 +353,7 @@ export default {
             data_room: {},
             room: {},
             id_kamar: '',
-            nomor_kamar: '',
+            // nomor_kamar: '',
             type_kamar: '',
             harga: '',
             status_kamar: '',
@@ -411,7 +419,7 @@ export default {
                     (response) => {
                         console.log(response.data[0])
                         this.id_kamar = response.data[0].id_kamar
-                        this.nomor_kamar = response.data[0].nomor_kamar
+                        // this.nomor_kamar = response.data[0].nomor_kamar
                         this.type_kamar = response.data[0].type_kamar
                         this.max = response.data[0].max
                         this.harga = response.data[0].harga
@@ -425,7 +433,7 @@ export default {
         editkamar() {
             let kamar = {
                 id_kamar: this.id_kamar,
-                nomor_kamar: this.nomor_kamar,
+                // nomor_kamar: this.nomor_kamar,
                 type_kamar: this.type_kamar,
                 harga: this.harga,
                 status_kamar: this.status_kamar,
