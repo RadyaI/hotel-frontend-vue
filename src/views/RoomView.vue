@@ -225,11 +225,11 @@
                         <form @submit.prevent="booknow">
                             <div class="row">
                                 <div class="col">
-                                    <input type="text" required class="form-control" placeholder="Masukkan nama anda..."
+                                    <input type="text" required v-model="nama_tamu" class="form-control" placeholder="Masukkan nama anda..."
                                         autocomplete="off">
                                 </div>
                                 <div class="col">
-                                    <input type="email" required class="form-control" placeholder="Masukkan Email anda"
+                                    <input type="email" required v-model="email" class="form-control" placeholder="Masukkan Email anda"
                                         autocomplete="off">
                                 </div>
                             </div>
@@ -280,6 +280,7 @@
 import axios from 'axios'
 // import { filter } from 'vue/types/umd';
 import moment from 'moment'
+import swal from 'sweetalert'
 // import datepicker from 'vue-datepicker'
 export default {
     components: {
@@ -296,9 +297,12 @@ export default {
             max: '',
             type_kamar: '',
             deskripsi: '',
+            id_kamar:'',
             harga: 0,
             totalharga: 0,
             jumlah_kamar: 0,
+            nama_tamu:'',
+            email: '',
             booking: {
 
             }
@@ -381,6 +385,7 @@ export default {
                     (response) => {
                         console.log(response.data[0])
                         this.foto = response.data[0].foto
+                        this.id_kamar = response.data[0].id_kamar
                         this.max = response.data[0].max
                         this.type_kamar = response.data[0].type_kamar
                         this.deskripsi = response.data[0].deskripsi
@@ -389,7 +394,26 @@ export default {
                 )
         },
         booknow() {
-
+            let data_peminjaman = {
+                nama_tamu : this.nama_tamu,
+                email : this.email,
+                checkin : this.checkin,
+                checkout : this.checkout,
+                id_kamar : this.id_kamar,
+                jumlah_kamar : this.jumlah_kamar,
+                harga : this.totalharga,
+            }
+            axios.post('http://localhost:8000/api/createtransaksi' , data_peminjaman)
+            .then(
+                (response) => {
+                    console.log(response)
+                    swal({
+                        icon: 'success',
+                        title: 'Sukses booking kamar'
+                    })
+                    location.href = '/cetak'
+                }
+            )
         }
     }
 }

@@ -5,7 +5,9 @@ import indexhome from '../views/IndexHome.vue'
 import room from '../views/RoomView.vue'
 import notfound from '../views/NotFound.vue'
 import admin from '../views/admin/AdminView.vue'
+import resepsionis from '../views/resepsionis/ResepView.vue'
 import manageroom from '../views/admin/ManageRoom.vue'
+import cetakbukti from '../views/CetakBukti.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -18,12 +20,20 @@ const routes = [
     component: admin
   },
   {
+    path: '/resepsionis',
+    component: resepsionis
+  },
+  {
     path: '/manageroom',
     component: manageroom
   },
   {
     path: '/room',
     component: room
+  },
+  {
+    path: '/cetak',
+    component: cetakbukti
   },
   {
     path: '*',

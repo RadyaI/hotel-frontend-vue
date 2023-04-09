@@ -192,6 +192,7 @@
                                             <p>
                                                 Type: {{ room.type_kamar }} / <span v-if="room.status_kamar !== 'kosong'" class="badge badge-danger">Unavailable</span><span v-else class="badge badge-success">Available</span>
                                             </p>
+                                            <span><p>Status: {{ room.status_kamar }}</p></span>
                                             <span><small>Max: {{ room.max }} person</small></span>
                                             <div class="options">
                                                 <h6>
