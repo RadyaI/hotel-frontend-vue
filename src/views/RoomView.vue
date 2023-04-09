@@ -254,6 +254,7 @@
                                     Jumlah kamar:
                                     <input type="number" required @change="hitungtotalharga" class="form-control"
                                         v-model="jumlah_kamar">
+                                        <small v-if="this.jumlah_kamar == 0" style="color: red;">*minimal 1 hari</small>
                                 </div>
                                 <div class="col">
                                     <input type="hidden" v-model="harga" @change="hitungtotalharga">
@@ -411,7 +412,7 @@ export default {
                         icon: 'success',
                         title: 'Sukses booking kamar'
                     })
-                    location.href = '/cetak'
+                    location.href = '/cetak/' + this.nama_tamu
                 }
             )
         }

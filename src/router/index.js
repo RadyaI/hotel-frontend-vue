@@ -32,7 +32,7 @@ const routes = [
     component: room
   },
   {
-    path: '/cetak',
+    path: '/cetak/:id',
     component: cetakbukti
   },
   {
