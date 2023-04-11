@@ -151,13 +151,13 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/managebooking">Manage Booking</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item active">
                                 <a class="nav-link" href="/confirmed">confirmed</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/ongoing">Ongoing</a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/cleaned">Cleaned</a>
                             </li>
                         </ul>
@@ -166,7 +166,7 @@
             </div>
         </header>
         <!-- END NAVBAR FOR ADMIN -->
-        <h2 class="mt-3" style="font-family:'Times New Roman';" align="center">Being Processed</h2>
+        <h2 class="mt-3" style="font-family:'Times New Roman';" align="center">Confirmed</h2>
         <div class="container">
             <!-- <div class="input-container">
                 <input type="number" v-model="cari_id" class="input mb-3" placeholder="search by id">

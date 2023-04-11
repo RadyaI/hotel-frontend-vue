@@ -12,6 +12,7 @@ import cetakbukti from '../views/CetakBukti.vue'
 import resepsionis from '../views/resepsionis/ResepView.vue'
 import managebooking from '../views/resepsionis/ManageBooking.vue'
 import ongoing from '../views/resepsionis/OnGoing.vue'
+import confirmed from '../views/resepsionis/ConfirmedView.vue'
 import diproses from '../views/resepsionis/DiProses.vue'
 
 Vue.use(VueRouter)
@@ -36,6 +37,10 @@ const routes = [
   {
     path: '/cleaned',
     component: diproses
+  },
+  {
+    path:'/confirmed',
+    component: confirmed
   },
   {
     path: '/managebooking',

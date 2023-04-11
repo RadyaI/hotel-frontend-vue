@@ -152,6 +152,9 @@
                                 <a class="nav-link" href="/managebooking">Manage Booking</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/confirmed">confirmed</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/ongoing">Ongoing</a>
                             </li>
                             <li class="nav-item">
@@ -166,8 +169,8 @@
         <h2 class="mt-3" style="font-family:'Times New Roman';" align="center">HOME</h2>
         <div class="container">
             <div class="input-container">
-                <input type="number" v-model="cari_id" class="input mb-3" placeholder="search by id">
-                <input type="date" v-model="cari_tanggal" class="input mb-3">
+                <input type="text" v-model="cari_id" class="input mb-3" placeholder="search by name">
+                <!-- <input type="date" v-model="cari_tanggal" class="input mb-3"> -->
             </div>
             <!-- DATA PEMESANAN MULAI DARI SINI -->
             <div v-for="booking in filterdata" :key="booking.id_transaksi" class="card mt-2">
@@ -344,12 +347,16 @@ export default {
     computed: {
         filterdata() {
             let filtered = this.alldata;
-            if (this.cari_id) {
-                filtered = filtered.filter(booking => booking.id_transaksi.toString().toLowerCase().includes(this.cari_id.toLowerCase()))
+            if (this.cari_id ) {
+                filtered = filtered.filter(booking => booking.nama_tamu.toString().toLowerCase().includes(this.cari_id.toLowerCase()))
+            } else {
+                filtered = false    
             }
 
             if (this.cari_tanggal) {
                 filtered = filtered.filter(booking => booking.tgl_pesan === this.cari_tanggal)
+            } else {
+                // filtered = false
             }
 
             return filtered

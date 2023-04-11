@@ -151,6 +151,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/managebooking">Manage Booking</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/confirmed">confirmed</a>
+                            </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="/ongoing">Ongoing</a>
                             </li>

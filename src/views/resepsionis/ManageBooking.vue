@@ -51,23 +51,23 @@
                                             <g>
                                                 <path
                                                     d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                                                                                                                                                                                                       c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                                                                                                                                                                                                                                                   c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                                                                                                                                                                                                       C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                                                                                                                                                                                                       c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                                                                                                                                                                                                       C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                                                                                                                                                                                                                                                   C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                                                                                                                                                                                                                                                                   c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                                                                                                                                                                                                                                                                   C457.728,97.71,450.56,86.958,439.296,84.91z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                                                                                                                                                                                                       c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                                                                                                                                                                                                                                                   c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                             </g>
                                         </g>
                                         <g>
@@ -152,6 +152,9 @@
                                 <a class="nav-link" href="/managebooking">Manage Booking</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/confirmed">confirmed</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/ongoing">Ongoing</a>
                             </li>
                             <li class="nav-item">
@@ -165,12 +168,35 @@
         <!-- END NAVBAR FOR ADMIN -->
         <h2 class="mt-3" style="font-family:'Times New Roman';" align="center">BOOKING</h2>
         <div class="container">
-            <!-- <div class="input-container">
-                <input type="number" v-model="cari_id" class="input mb-3" placeholder="search by id">
-                <input type="date" v-model="cari_tanggal" class="input mb-3">
-            </div> -->
+            <div class="input-container">
+                <!-- <input type="text" v-model="cari_id" class="input mb-3" placeholder="search by id"> -->
+                <!-- <label for="date">Search by Check-In date: </label> -->
+                <input type="date" id="date" v-model="cari_tanggal" class="input mb-3">
+            </div>
             <!-- DATA PEMESANAN MULAI DARI SINI -->
-           
+            <div v-for="booking in filterdata" :key="booking.id_transaksi" class="card mt-2">
+                <input type="hidden" v-model="id">
+                <div class="card-header">
+                    {{ booking.tgl_pesan }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ booking.email }} / ID: {{ booking.id_transaksi }}</h5>
+                    <p class="card-text"><b>Check-In:</b> {{ booking.check_in }} <br> <b>Check-Out:</b> {{ booking.check_out
+                    }}
+                    </p>
+                    <p class="card-text">
+                        <span v-if="booking.status == 'dipesan'">Status: <span class="text-danger">Belum di
+                                konfirmasi</span></span>
+                        <span v-else-if="booking.status == 'dikonfirmasi'">Status: <span class="text-success">Sudah Di
+                                Konfirmasi</span></span>
+                        <span v-else-if="booking.status == 'dipakai'">Status: <span class="text-info">Sedang di
+                                gunakan</span></span>
+                        <span v-else>Status: <span class="text-warning">Belum bisa di gunakan</span></span>
+                    </p>
+                    <button class="btn btn-outline-dark" @click="detailbooking(booking)" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">Update</button>
+                </div>
+            </div>
             <!-- END DATA PEMESANAN -->
             <br>
             <br>
@@ -182,7 +208,71 @@
 
 
         <!-- MODAL DETAIL -->
-      
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Booking Konfirmasi</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form @submit.prevent="updatebooking">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="nama">Atas nama: </label>
+                                    <input type="text" id="nama" class="form-control" v-model="nama_tamu">
+                                </div>
+                                <div class="col">
+                                    <label for="email">Email: </label>
+                                    <input type="email" id="email" class="form-control" v-model="email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="pesan">Tanggal Pesan: </label>
+                                    <input type="date" id="pesan" class="form-control" v-model="tgl_pesan">
+                                </div>
+                                <div class="col">
+                                    <label for="checkin">Check-In: </label>
+                                    <input type="date" id="checkin" class="form-control" v-model="check_in">
+                                </div>
+                                <div class="col">
+                                    <label for="checkout">Check-Out: </label>
+                                    <input type="date" id="checkout" class="form-control" v-model="check_out">
+                                </div>
+                            </div>
+                            <hr style="border: 1.5px solid black; opacity: 1;">
+                            <input type="hidden" v-model="id_transaksi">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="nomor_kamar">Nomor Kamar: </label>
+                                    <input type="number" class="form-control" id="nomor_kamar" required v-model="no_kamar">
+                                    <!-- <span v-if="this.no_kamar == '' "><small>*required</small></span> -->
+                                </div>
+                                <div class="col">
+                                    <label for="type">Type Kamar: </label>
+                                    <input type="text" class="form-control" id="type" v-model="type_kamar">
+                                </div>
+                                <div class="col">
+                                    <label for="jumlah">Jumlah Kamar: </label>
+                                    <input type="number" class="form-control" id="jumlah" v-model="jumlah_kamar">
+                                </div>
+                                <div class="col">
+                                    <label for="harga">Total Harga: </label>
+                                    <input type="number" class="form-control" id="harga" v-model="total_harga">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+                            <input type="submit" class="btn btn-outline-dark" value="Konfirmasi">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- END MODAL DETAIL -->
 
         <!-- MODAL EDIT USER -->
@@ -233,11 +323,111 @@
 </style>
 <script>
 // import navbar from '../components/template/NavBar.vue'
-// import axios from 'axios'
-// import { response } from 'express';
-// import swal from 'sweetalert'
+import axios from 'axios'
+import swal from 'sweetalert'
 
 export default {
-   
+    data() {
+        return {
+            bookingdata: {},
+            cari_id: '',
+            cari_tanggal: '',
+            nama_tamu: '',
+            email: '',
+            tgl_pesan: '',
+            check_in: '',
+            check_out: '',
+            id_transaksi: '',
+            type_kamar: '',
+            jumlah_kamar: '',
+            total_harga: ''
+        }
+    },
+    created() {
+        this.getbooking()
+        this.detailbooking()
+    },
+    computed: {
+        filterdata() {
+            let filtered = this.bookingdata
+            if (this.cari_tanggal) {
+                filtered = filtered.filter(booking => booking.check_in === this.cari_tanggal)
+            }
+            return filtered
+        }
+    },
+    methods: {
+        getbooking() {
+            axios.get('http://localhost:8000/api/notconfirmed')
+                .then(
+                    ({ data }) => {
+                        this.bookingdata = data
+                        console.log(data)
+                    }
+                )
+        },
+        detailbooking(booking) {
+            axios.get('http://localhost:8000/api/gettransaksibyid/' + booking.id_transaksi)
+                .then(
+                    (response) => {
+                        console.log(response.data)
+                        this.nama_tamu = response.data.nama_tamu
+                        this.email = response.data.email
+                        this.tgl_pesan = response.data.tgl_pesan
+                        this.check_in = response.data.check_in
+                        this.check_out = response.data.check_out
+                        this.id_transaksi = response.data.id_transaksi
+                        this.type_kamar = response.data.type_kamar
+                        this.total_harga = response.data.total_harga
+                        this.jumlah_kamar = response.data.jumlah_kamar
+                    }
+                )
+        },
+        updatebooking() {
+            swal({
+                icon: 'warning',
+                title: 'Ingin Konfirmasi booking?',
+                dangerMode: true,
+                buttons: true,
+            }).then(
+                (konfirmasi) => {
+                    if (konfirmasi) {
+                        let data = {
+                            id_transaksi: this.id_transaksi,
+                            no_kamar: this.no_kamar
+                        }
+                        axios.put('http://localhost:8000/api/konfirmasi/' + this.id_transaksi, data)
+                            .then(
+                                (response) => {
+                                    console.log(response)
+                                    swal({
+                                        icon: 'success',
+                                        title: 'Berhasil Konfirmasi'
+                                    })
+                                    setTimeout(() => {
+                                        location.reload()
+                                    }, 1200);
+
+                                }
+                            )
+                    } else {
+                        swal({
+                            icon: 'error',
+                            title: 'Gagal Konfirmasi'
+                        })
+                    }
+                }
+            )
+                .catch(
+                    (err) => {
+                        console.log(err)
+                        swal({
+                            icon: 'error',
+                            title: 'Gagal Konfirmasi'
+                        })
+                    }
+                )
+        }
+    }
 }
 </script>
