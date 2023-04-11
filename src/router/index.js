@@ -5,9 +5,15 @@ import indexhome from '../views/IndexHome.vue'
 import room from '../views/RoomView.vue'
 import notfound from '../views/NotFound.vue'
 import admin from '../views/admin/AdminView.vue'
-import resepsionis from '../views/resepsionis/ResepView.vue'
 import manageroom from '../views/admin/ManageRoom.vue'
 import cetakbukti from '../views/CetakBukti.vue'
+
+// RESEPSIONIS
+import resepsionis from '../views/resepsionis/ResepView.vue'
+import managebooking from '../views/resepsionis/ManageBooking.vue'
+import ongoing from '../views/resepsionis/OnGoing.vue'
+import diproses from '../views/resepsionis/DiProses.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -22,6 +28,18 @@ const routes = [
   {
     path: '/resepsionis',
     component: resepsionis
+  },
+  {
+    path: '/ongoing',
+    component: ongoing
+  },
+  {
+    path: '/cleaned',
+    component: diproses
+  },
+  {
+    path: '/managebooking',
+    component: managebooking
   },
   {
     path: '/manageroom',
