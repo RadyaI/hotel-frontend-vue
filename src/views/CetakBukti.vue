@@ -66,7 +66,6 @@
         </div>
     </div>
 </template>
-// GK BISA CSS OWAKOAWK
 <style>
 @media print {
     .print-button {
