@@ -66,7 +66,10 @@
         </div>
     </div>
 </template>
+
+<!-- GK BISA CSS AOWKOAKW -->
 <style>
+
 @media print {
     .print-button {
         display: none;
