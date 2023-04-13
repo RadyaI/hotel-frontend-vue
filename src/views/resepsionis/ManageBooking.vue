@@ -168,7 +168,8 @@
         <!-- END NAVBAR FOR ADMIN -->
         <h2 class="mt-3" style="font-family:'Times New Roman';" align="center">BOOKING</h2>
         <div class="container">
-            <div class="input-container">
+            <small>tanggal check-in:</small>
+            <div class="input-container mt-2">
                 <!-- <input type="text" v-model="cari_id" class="input mb-3" placeholder="search by id"> -->
                 <!-- <label for="date">Search by Check-In date: </label> -->
                 <input type="date" id="date" v-model="cari_tanggal" class="input mb-3">
@@ -245,11 +246,11 @@
                             <hr style="border: 1.5px solid black; opacity: 1;">
                             <input type="hidden" v-model="id_transaksi">
                             <div class="row">
-                                <div class="col">
+                                <!-- <div class="col">
                                     <label for="nomor_kamar">Nomor Kamar: </label>
                                     <input type="number" class="form-control" id="nomor_kamar" required v-model="no_kamar">
-                                    <!-- <span v-if="this.no_kamar == '' "><small>*required</small></span> -->
-                                </div>
+                                    <span v-if="this.no_kamar == '' "><small>*required</small></span>
+                                </div> -->
                                 <div class="col">
                                     <label for="type">Type Kamar: </label>
                                     <input type="text" class="form-control" id="type" v-model="type_kamar">
@@ -340,7 +341,8 @@ export default {
             id_transaksi: '',
             type_kamar: '',
             jumlah_kamar: '',
-            total_harga: ''
+            total_harga: '',
+            // no_kamar: '',
         }
     },
     created() {
@@ -394,7 +396,7 @@ export default {
                     if (konfirmasi) {
                         let data = {
                             id_transaksi: this.id_transaksi,
-                            no_kamar: this.no_kamar
+                            // no_kamar: this.no_kamar
                         }
                         axios.put('http://localhost:8000/api/konfirmasi/' + this.id_transaksi, data)
                             .then(
