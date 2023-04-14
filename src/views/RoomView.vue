@@ -149,9 +149,11 @@
                         <div class="col-sm-6 col-lg-4 all pizza" v-for="kamar in filterKamar" :key="kamar.id_kamar">
                             <div class="box">
                                 <div>
-                                    <div class="img-box">
+                                    <!-- <div class="img-box">
                                         <img :src="'http://localhost/UKL-Hotel/HotelLaravel_9/public/images/' + kamar.foto">
-                                    </div>
+                                    </div> -->
+                                    <img :src="'http://localhost/UKL-Hotel/HotelLaravel_9/public/images/' + kamar.foto"
+                                        style="width:357px;height:250px;" class="card-img-top">
                                     <div class="detail-box">
                                         <h5>
                                             {{ kamar.nomor_kamar }}

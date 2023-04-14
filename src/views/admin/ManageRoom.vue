@@ -51,23 +51,23 @@
                                             <g>
                                                 <path
                                                     d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                                                                                                                                                                                                                                                                                                   c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                                                                                                                                                                                                                                                                                                                       c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                                                                                                                                                                                                                                                                                                   C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                                                                                                                                                                                                                                                                                                   c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                                                                                                                                                                                                                                                                                                   C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                                                                                                                                                                                                                                                                                                                       C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                                                                                                                                                                                                                                                                                                                                       c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                                                                                                                                                                                                                                                                                                                                       C457.728,97.71,450.56,86.958,439.296,84.91z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                                                                                                                                                                                                                                                                                                   c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                                                                                                                                                                                                                                                                                                                       c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                             </g>
                                         </g>
                                         <g>
@@ -180,19 +180,23 @@
                             <div v-for="room in data_room" :key="room.id_kamar" class="col-sm-6 col-lg-4 all pizza">
                                 <div class="box">
                                     <div>
-                                        <div class="img-box">
-                                            <!-- {{ room.foto }} -->
-                                            <img
-                                                :src="'http://localhost/UKL-Hotel/HotelLaravel_9/public/images/' + room.foto">
-                                        </div>
+                                        <!-- <div class="img-box"> -->
+                                        <!-- {{ room.foto }} -->
+                                        <img :src="'http://localhost/UKL-Hotel/HotelLaravel_9/public/images/' + room.foto"
+                                        style="width:348px;height:250px;" class="card-img-top">
+                                        <!-- </div> -->
                                         <div class="detail-box">
                                             <h5>
                                                 <!-- Nomor: {{ room.nomor_kamar }} -->
                                             </h5>
                                             <p>
-                                                Type: {{ room.type_kamar }} / <span v-if="room.status_kamar !== 'kosong'" class="badge badge-danger">Unavailable</span><span v-else class="badge badge-success">Available</span>
+                                                Type: {{ room.type_kamar }} / <span v-if="room.status_kamar !== 'kosong'"
+                                                    class="badge badge-danger">Unavailable</span><span v-else
+                                                    class="badge badge-success">Available</span>
                                             </p>
-                                            <span><p>Status: {{ room.status_kamar }}</p></span>
+                                            <span>
+                                                <p>Status: {{ room.status_kamar }}</p>
+                                            </span>
                                             <span><small>Max: {{ room.max }} person</small></span>
                                             <div class="options">
                                                 <h6>
@@ -202,7 +206,8 @@
                                                     <button class="btn btn-secondary" data-bs-toggle="modal"
                                                         data-bs-target="#editkamar" @click="showdetailkamar(room)"><i
                                                             class="bi bi-gear-fill"></i></button>
-                                                    <button class="btn btn-danger" @click="hapus(room)"><i class="bi bi-trash"></i></button>
+                                                    <button class="btn btn-danger" @click="hapus(room)"><i
+                                                            class="bi bi-trash"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -250,8 +255,8 @@
 
                             <label for="max">Max</label>
                             <select v-model="room.max" id="max" required class="form-control">
-                            <option value="1-2">1-2</option>
-                            <option value="2-4">2-4</option>
+                                <option value="1-2">1-2</option>
+                                <option value="2-4">2-4</option>
                             </select>
 
                             <!-- <label for="foto">Foto:</label>
@@ -310,8 +315,8 @@
 
                             <label for="max">Max</label>
                             <select v-model="max" id="max" required class="form-control">
-                            <option value="1-2">1-2</option>
-                            <option value="2-4">2-4</option>
+                                <option value="1-2">1-2</option>
+                                <option value="2-4">2-4</option>
                             </select>
 
                             <label for="status">Status Kamar:</label>
@@ -329,7 +334,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-info text-light">Add Image</button>
+                            <button type="button" class="btn btn-outline-dark" data-bs-target="#foto"
+                                data-bs-toggle="modal">Add Image</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <input type="submit" class="btn btn-primary" value="Save Changes">
                         </div>
@@ -337,8 +343,32 @@
                 </div>
             </div>
         </div>
+        <!-- END MODAL EDIT ROOM -->
+
+        <!-- ADD PHOTO -->
+        <div class="modal fade" id="foto" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Upload Photo</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form @submit.prevent="upload">
+                        <div class="modal-body">
+                            <input type="file" id="foto" @change="UploadRoom($event)" class="form-control" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-bs-target="#editkamar"
+                                data-bs-toggle="modal">Back</button>
+                            <input type="submit" class="btn btn-outline-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END ADD PHOTO -->
+
     </div>
-    <!-- END MODAL EDIT ROOM -->
 </template>
 <script>
 // import navbar from '../components/template/NavBar.vue'
@@ -371,18 +401,7 @@ export default {
         this.showdetailkamar()
     },
     methods: {
-        inputFile(event) {
-            this.file = event.target.files[0];
-        },
         save() {
-            // var formdata = new FormData();
-            // formdata.append('nomor_kamar', this.nomor_kamar)
-            // formdata.append('type_kamar', this.type_kamar)
-            // formdata.append('status_kamar', this.status_kamar)
-            // formdata.append('deskripsi', this.deskripsi)        
-            // formdata.append('file', this.file)
-            // formdata.append('harga', this.harga)
-
             axios.post('http://localhost:8000/api/createkamar', this.room)
                 .then(
                     ({ data }) => {
@@ -455,7 +474,7 @@ export default {
                     }
                 )
         },
-        hapus(room){
+        hapus(room) {
             swal({
                 icon: 'warning',
                 title: 'Ingin hapus kamar ini?',
@@ -463,29 +482,50 @@ export default {
                 buttons: true
             }).then(
                 (hapus) => {
-                    if(hapus){
+                    if (hapus) {
                         axios.delete('http://localhost:8000/api/deletekamar/' + room.id_kamar)
-                        .then(
-                            (response) => {
-                                console.log(response)
-                                swal({
-                                    icon: 'success',
-                                    title: 'Sukses delete kamar'
-                                })
-                                setTimeout(() => {
-                                    location.reload()
-                                }, 1200);
-                            }
-                        )
-                        .catch(
-                            (err) => {
-                                console.log(err)
-                                console.log('Gagal hapus kamar')
-                            }
-                        )
+                            .then(
+                                (response) => {
+                                    console.log(response)
+                                    swal({
+                                        icon: 'success',
+                                        title: 'Sukses delete kamar'
+                                    })
+                                    setTimeout(() => {
+                                        location.reload()
+                                    }, 1200);
+                                }
+                            )
+                            .catch(
+                                (err) => {
+                                    console.log(err)
+                                    console.log('Gagal hapus kamar')
+                                }
+                            )
                     }
                 }
             )
+        },
+        UploadRoom(e) {
+            this.foto = e.target.files[0]
+        },
+        upload() {
+            let form = new FormData
+            form.append("foto", this.foto)
+
+            axios.post("http://localhost:8000/api/uploadFoto/" + this.id_kamar, form)
+                .then(
+                    (response) => {
+                        console.log(response)
+                        swal({
+                            title: 'Sukses upload foto',
+                            icon: 'success'
+                        })
+                        setTimeout(() => {
+                            location.reload()
+                        }, 1200);
+                    }
+                )
         }
     }
 }
