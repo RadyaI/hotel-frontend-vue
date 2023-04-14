@@ -51,23 +51,23 @@
                                             <g>
                                                 <path
                                                     d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                                                                                                                                                                                                                                   c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                                                                                                                                                                                                                                                   c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                                                                                                                                                                                                                                   C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                                                                                                                                                                                                                                   c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                                                                                                                                                                                                                                   C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                                                                                                                                                                                                                                                   C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                                                                                                                                                                                                                                                                   c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                                                                                                                                                                                                                                                                   C457.728,97.71,450.56,86.958,439.296,84.91z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                                                                                                                                                                                                                                   c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                                                                                                                                                                                                                                                   c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                             </g>
                                         </g>
                                         <g>
@@ -160,6 +160,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/cleaned">Cleaned</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/history">history</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -191,8 +194,11 @@
                                 gunakan</span></span>
                         <span v-else>Status: <span class="text-warning">Belum bisa di gunakan</span></span>
                     </p>
-                    <button class="btn btn-outline-dark" @click="detailbooking(booking)" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">Detail</button>
+                    <div class="btn-group">
+                        <button class="btn btn-outline-dark" @click="detailbooking(booking)" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">Detail</button>
+                        <button class="btn btn-outline-danger" @click="checkout(booking)">Check-Out</button>
+                    </div>
                 </div>
             </div>
             <!-- END DATA PEMESANAN -->
@@ -242,6 +248,7 @@
                             </div>
                             <hr style="border: 1.5px solid black; opacity: 1;">
                             <input type="hidden" v-model="id_transaksi">
+                            <input type="hidden" v-model="id_kamar">
                             <div class="row">
                                 <div class="col">
                                     <label for="nomor_kamar">Nomor Kamar: </label>
@@ -319,6 +326,7 @@
 <script>
 // import navbar from '../components/template/NavBar.vue'
 import axios from 'axios'
+import swal from 'sweetalert'
 // import { response } from 'express';
 // import swal from 'sweetalert'
 
@@ -338,6 +346,7 @@ export default {
             jumlah_kamar: '',
             total_harga: '',
             no_kamar: '',
+            id_kamar: ''
         }
     },
     created() {
@@ -377,10 +386,48 @@ export default {
                         this.total_harga = response.data.total_harga
                         this.jumlah_kamar = response.data.jumlah_kamar
                         this.no_kamar = response.data.no_kamar
+                        this.id_kamar = response.data.id_kamar
 
                     }
                 )
         },
+        checkout(booking) {
+            swal({
+                icon: 'warning',
+                title: 'Ingin Check-Out?',
+                dangerMode: true,
+                buttons: true
+            })
+                .then(
+                    (checkout) => {
+                        if (checkout) {
+                            axios.put('http://localhost:8000/api/checkout/' + booking.id_transaksi + '/' + booking.id_kamar)
+                                .then(
+                                    (response) => {
+                                        console.log(response)
+                                        swal({
+                                            icon: 'success',
+                                            title: 'Check-Out Success'
+                                        })
+                                        setTimeout(() => {
+                                            location.reload()
+                                        }, 1200);
+                                    }
+                                )
+                        }
+                    }
+                )
+                .catch(
+                    (err) => {
+                        console.log(err)
+                        swal({
+                            title: 'Failed Check-Out',
+                            icon: 'error',
+                            buttons: true
+                        })
+                    }
+                )
+        }
     }
 }
 </script>

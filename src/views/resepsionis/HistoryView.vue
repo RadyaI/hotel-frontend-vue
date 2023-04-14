@@ -157,10 +157,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/ongoing">Ongoing</a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/cleaned">Cleaned</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item active">
                                 <a class="nav-link" href="/history">History</a>
                             </li>
                         </ul>
@@ -169,7 +169,7 @@
             </div>
         </header>
         <!-- END NAVBAR FOR ADMIN -->
-        <h2 class="mt-3" style="font-family:'Times New Roman';" align="center">Being Processed</h2>
+        <h2 class="mt-3" style="font-family:'Times New Roman';" align="center">History</h2>
         <div class="container">
             <div class="input-container mt-2">
                 <input type="text" id="date" v-model="cari_nama" class="input mb-3" placeholder="Cari nama...">
@@ -192,12 +192,13 @@
                                 Konfirmasi</span></span>
                         <span v-else-if="booking.status == 'dipakai'">Status: <span class="text-info">Sedang di
                                 gunakan</span></span>
-                        <span v-else>Status: <span class="text-warning">Belum bisa di gunakan</span></span>
+                        <span v-else-if="booking.status == 'dibersihkan'">Status: <span class="text-warning">Belum bisa di gunakan</span></span>
+                        <span v-else>Status: <span class="badge badge-success">SELESAI</span></span>
                     </p>
                     <div class="btn-group">
                         <button class="btn btn-outline-dark" @click="detailbooking(booking)" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">Detail</button>
-                        <button class="btn btn-outline-danger" @click="done(booking)">Done</button>
+                        <!-- <button class="btn btn-outline-danger" @click="done(booking)">Done</button> -->
                     </div>
                 </div>
             </div>
@@ -326,7 +327,7 @@
 <script>
 // import navbar from '../components/template/NavBar.vue'
 import axios from 'axios'
-import swal from 'sweetalert'
+// import swal from 'sweetalert'
 // import { response } from 'express';
 // import swal from 'sweetalert'
 
@@ -365,7 +366,7 @@ export default {
     },
     methods: {
         getdatabooking() {
-            axios.get('http://localhost:8000/api/dibersihkan')
+            axios.get('http://localhost:8000/api/history')
                 .then(
                     ({ data }) => {
                         this.alldata = data
@@ -391,38 +392,6 @@ export default {
                     }
                 )
         },
-        done(booking) {
-            swal({
-                title: 'Are you sure?',
-                icon: 'warning',
-                dangerMode: true,
-                buttons: true
-            })
-                .then(
-                    (done) => {
-                        if (done) {
-                            // UPDATE DATA
-                            axios.put('http://localhost:8000/api/kamar_done/' + booking.id_transaksi + '/' + booking.id_kamar)
-                            swal({
-                                title: 'Success',
-                                icon: 'success'
-                            })
-                            setTimeout(() => {
-                                location.reload()
-                            }, 1200);
-                        }
-                    }
-                )
-                .catch(
-                    (err) => {
-                        console.log(err)
-                        swal({
-                            title: 'Failed',
-                            icon: 'error'
-                        })
-                    }
-                )
-        }
     },
 }
 </script>

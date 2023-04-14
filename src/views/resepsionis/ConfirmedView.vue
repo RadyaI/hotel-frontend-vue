@@ -160,6 +160,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/cleaned">Cleaned</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/history">History</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

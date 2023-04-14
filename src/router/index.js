@@ -14,6 +14,7 @@ import managebooking from '../views/resepsionis/ManageBooking.vue'
 import ongoing from '../views/resepsionis/OnGoing.vue'
 import confirmed from '../views/resepsionis/ConfirmedView.vue'
 import diproses from '../views/resepsionis/DiProses.vue'
+import history from '../views/resepsionis/HistoryView.vue'
 
 Vue.use(VueRouter)
 
@@ -41,6 +42,10 @@ const routes = [
   {
     path:'/confirmed',
     component: confirmed
+  },
+  {
+    path: '/history',
+    component: history
   },
   {
     path: '/managebooking',
