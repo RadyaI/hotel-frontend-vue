@@ -23,12 +23,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/room">Room</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="/admin">Admin</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/resepsionis">Resepsionis</a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="/bookroom">Book Room</a>
                             </li>

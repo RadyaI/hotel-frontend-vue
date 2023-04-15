@@ -22,7 +22,7 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav  mx-auto ">
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" href="/">Home</a>
                                 </li>
                                 <li class="nav-item">
@@ -36,7 +36,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/bookroom">Book Room</a>
-                                </li>
+                                </li> -->
                             </ul>
                             <div class="user_option">
                                 <a href="" class="user_link">
@@ -159,6 +159,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/cleaned">Cleaned</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/history">History</a>
                             </li>
                         </ul>
                     </div>

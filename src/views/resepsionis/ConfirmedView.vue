@@ -22,7 +22,7 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav  mx-auto ">
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" href="/">Home</a>
                                 </li>
                                 <li class="nav-item">
@@ -33,10 +33,10 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/resepsionis">Resepsionis</a>
-                                </li>
-                                <li class="nav-item">
+                                </li> -->
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" href="/bookroom">Book Room</a>
-                                </li>
+                                </li> -->
                             </ul>
                             <div class="user_option">
                                 <a href="" class="user_link">
