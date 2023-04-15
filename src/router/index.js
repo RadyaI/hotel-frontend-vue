@@ -8,6 +8,7 @@ import forbidden from '../views/ForbiddenView.vue'
 import admin from '../views/admin/AdminView.vue'
 import manageroom from '../views/admin/ManageRoom.vue'
 import cetakbukti from '../views/CetakBukti.vue'
+import cekbooking from '../views/CekBooking.vue'
 
 // RESEPSIONIS
 import resepsionis from '../views/resepsionis/ResepView.vue'
@@ -97,6 +98,10 @@ const routes = [
   {
     path: '/cetak/:id',
     component: cetakbukti
+  },
+  {
+    path: '/checkbooking',
+    component: cekbooking
   },
   {
     path: '/login',

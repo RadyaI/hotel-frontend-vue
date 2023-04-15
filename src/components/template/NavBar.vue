@@ -30,7 +30,7 @@
                                 <a class="nav-link" href="/resepsionis">Resepsionis</a>
                             </li> -->
                             <li class="nav-item">
-                                <a class="nav-link" href="/bookroom">Book Room</a>
+                                <a class="nav-link" href="/checkbooking">Check Booking</a>
                             </li>
                         </ul>
                         <div class="user_option">
