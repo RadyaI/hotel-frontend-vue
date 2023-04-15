@@ -7,7 +7,7 @@
             <p class="alamat2">08771624815, CihuyHotel@gmail.com</p>
             <p class="alamat3">www.cihuy.com</p>
         </nav>
-        <h3 class="print-button" style="position: absolute; left: 42%; top: 23%;">Booking Detail</h3>
+        <h3 class="print" style="position: absolute; left: 42%; top: 23%;">Booking Detail</h3>
         <table class="table1">
             <tr>
                 <td class="thtd" style="font-weight: bold;">ID Booking</td>
@@ -60,8 +60,8 @@
                 </tbody>
             </table>
             <div class="btn-group">
-                <button class="btn btn-outline-dark print-button" @click="print()">Print</button>
-                <button @click="kembali()" class="btn btn-outline-danger print-button">Kembali</button>
+                <input type="submit" class="btn btn-outline-dark print" @click="print()" value="Print">
+                <button @click="kembali()" class="btn btn-outline-danger print">Kembali</button>
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
 <style>
 
 @media print {
-    .print-button {
+   .print {
         display: none;
     }
 }
