@@ -107,9 +107,7 @@
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </button>
                                 </form>
-                                <a href="" class="order_online">
-                                    Booking Online
-                                </a>
+                                <button class="btn btn-outline-danger" @click="logout">LogOut</button>
                             </div>
                         </div>
                     </nav>
@@ -435,6 +433,27 @@ export default {
                             buttons: true
                         })
 
+                    }
+                )
+        },
+        logout() {
+            swal({
+                icon: 'warning',
+                title: 'Ingin Logout?',
+                dangerMode: true,
+                buttons: true
+            })
+                .then(
+                    (logout) => {
+                        if (logout) {
+                            localStorage.removeItem('token')
+                            localStorage.removeItem('role')
+                            swal({
+                                title: 'Success logout!',
+                                icon: 'success'
+                            })
+                            location.href='/login'
+                        }
                     }
                 )
         }

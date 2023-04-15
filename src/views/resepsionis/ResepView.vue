@@ -107,9 +107,8 @@
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </button>
                                 </form>
-                                <a href="" class="order_online">
-                                    Booking Online
-                                </a>
+                                <button class="btn btn-outline-danger" @click="logout">LogOut</button>
+
                             </div>
                         </div>
                     </nav>
@@ -323,7 +322,7 @@
 // import navbar from '../components/template/NavBar.vue'
 import axios from 'axios'
 // import { response } from 'express';
-// import swal from 'sweetalert'
+import swal from 'sweetalert'
 
 export default {
     data() {
@@ -396,6 +395,27 @@ export default {
                     }
                 )
         },
+        logout() {
+            swal({
+                icon: 'warning',
+                title: 'Ingin Logout?',
+                dangerMode: true,
+                buttons: true
+            })
+                .then(
+                    (logout) => {
+                        if (logout) {
+                            localStorage.removeItem('token')
+                            localStorage.removeItem('role')
+                            swal({
+                                title: 'Success logout!',
+                                icon: 'success'
+                            })
+                            location.href='/login'
+                        }
+                    }
+                )
+        }
     },
     // mounted() {
     //     this.detail_transaksi()
