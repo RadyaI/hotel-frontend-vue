@@ -51,23 +51,23 @@
                                             <g>
                                                 <path
                                                     d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                                                                                                                                                                                                                                   c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                                                                                                                                                                                                                                                           c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                                                                                                                                                                                                                                   C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                                                                                                                                                                                                                                   c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                                                                                                                                                                                                                                   C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                                                                                                                                                                                                                                                           C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                                                                                                                                                                                                                                                                           c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                                                                                                                                                                                                                                                                           C457.728,97.71,450.56,86.958,439.296,84.91z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                                                                                                                                                                                                                                   c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                                                                                                                                                                                                                                                           c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                             </g>
                                         </g>
                                         <g>
@@ -167,12 +167,16 @@
                                         <div class="options">
                                             <h6>
                                                 Rp.{{ kamar.harga }} / Malam
-                                            </h6>
-                                            <span v-if="kamar.status_kamar == 'kosong'"><button class="btn btn-secondary"
-                                                    data-bs-toggle="modal" data-bs-target="#addbooking"
-                                                    @click="detailkamar(kamar)"><i
-                                                        class="bi bi-cart-plus"></i></button></span>
+                                            </h6><br>
+                                            <div class="btn-group">
+                                                <span v-if="kamar.status_kamar == 'kosong'"><button
+                                                        class="btn btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#addbooking" @click="detailkamar(kamar)"><i
+                                                            class="bi bi-cart-plus"></i></button></span>
+                                            </div>
                                         </div>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#detail"
+                                            @click="detailkamar(kamar)">more info</a>
                                     </div>
                                 </div>
                             </div>
@@ -224,6 +228,7 @@
                         </div>
                         <hr style="border: 1px solid black; opacity: 1;">
 
+                        <!-- <hr style="border: 1px solid black; opacity: 1;"> -->
                         <form @submit.prevent="booknow">
                             <div class="row">
                                 <div class="col">
@@ -275,6 +280,50 @@
             </div>
         </div>
         <!-- MODAL NEW BOOKING END -->
+
+        <!-- DETAIL -->
+        <div class="modal fade" id="detail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">INFO</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img :src="'http://localhost/UKL-Hotel/HotelLaravel_9/public/images/' + foto"
+                            style="width:357px;height:250px;" class="card-img-top">
+
+                            <hr style="border: 1px solid black; opacity: 1;">
+
+                            <div class="row text-dark">
+                                <div class="col" v-if="this.max == '1-2'"><i class="bi bi-person-fill"></i>Sleeps 2 Guests</div>
+                                <div class="col" v-else><i class="bi bi-person-fill"></i>Sleeps 4 Guests</div>
+
+                                <div class="col" v-if="this.max == '1-2'"><i class="bi bi-building-fill"></i> 1 Queen or 2 Single</div>
+                                <div class="col" v-else><i class="bi bi-building-fill"></i> 2 Queen or 4 Single</div>
+
+                                <!-- <div class="col"><i class="bi bi-tv-fill"></i> TV</div> -->
+                                <div class="col"><i class="bi bi-cup-hot-fill"></i> Tea/Coffee Making</div>
+                                <div class="col"><i class="bi bi-shop"></i> Mini Bar</div> 
+                            </div>
+                            <br>
+                            <div class="row text-dark">
+                                <div class="col"><i class="bi bi-car-front-fill"></i> Free parking</div>
+                                <div class="col"><i class="bi bi-telephone-fill"></i> Phone</div>
+                                <div class="col"><i class="bi bi-tv-fill"></i> TV</div>
+                                <div class="col" v-if="this.type_kamar == 'Family'"><i class="bi bi-layout-split"></i> Window</div>
+                                <div class="col"><i class="bi bi-wifi"></i> Free wifi</div>
+                                <div class="col"><i class="bi bi-water"></i> Shower</div> 
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- DETAIL END -->
 
     </div>
 </template>

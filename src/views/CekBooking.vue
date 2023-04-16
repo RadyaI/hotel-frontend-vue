@@ -127,7 +127,7 @@
                 </div>
                 <div class="container">
                     <div class="input-container mt-2">
-                        <input type="email" id="date" v-model="cari_nama" class="input mb-3" placeholder="Cari email...">
+                        <input type="number" id="date" v-model="cari_nama" class="input mb-3" placeholder="Cari ID...">
                     </div>
                     <!-- DATA PEMESANAN MULAI DARI SINI -->
                     <div v-for="booking in filterdata" :key="booking.id_transaksi" class="card mt-2">
@@ -213,7 +213,7 @@ export default {
         filterdata() {
             let filter_data = this.ongoing_data
             if (this.cari_nama) {
-                filter_data = filter_data.filter(booking => booking.nama_tamu.toString().toLowerCase().includes(this.cari_nama.toLowerCase()))
+                filter_data = filter_data.filter(booking => booking.id_transaksi.toString().toLowerCase().includes(this.cari_nama.toLowerCase()))
             } else {
                 filter_data = false
             }
