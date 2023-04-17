@@ -314,6 +314,7 @@
                                 <div class="col"><i class="bi bi-tv-fill"></i> TV</div>
                                 <div class="col" v-if="this.type_kamar == 'Family'"><i class="bi bi-layout-split"></i> Window</div>
                                 <div class="col"><i class="bi bi-wifi"></i> Free wifi</div>
+                                <div class="col"><i class="bi bi-sun-fill"></i> Free Breakfast</div>
                                 <div class="col"><i class="bi bi-water"></i> Shower</div> 
                             </div>
                     </div>
