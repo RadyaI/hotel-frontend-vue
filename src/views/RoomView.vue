@@ -127,7 +127,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label for="person">Pilih salah satu:</label>
+                        <label for="person">Pilih satu:</label>
                         <select v-model="max_person" id="person" class="form-control">
                             <option value="">All</option>
                             <option value="1-2">1 - 2 Person</option>
