@@ -162,7 +162,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/history">history</a>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </nav>
@@ -171,11 +171,11 @@
         <!-- END NAVBAR FOR ADMIN -->
         <h2 class="mt-3" style="font-family:'Times New Roman';" align="center">BOOKING</h2>
         <div class="container">
-            <small>tanggal check-in:</small>
+            <!-- <small>Nama tamu:</small> -->
             <div class="input-container mt-2">
                 <!-- <input type="text" v-model="cari_id" class="input mb-3" placeholder="search by id"> -->
                 <!-- <label for="date">Search by Check-In date: </label> -->
-                <input type="date" id="date" v-model="cari_tanggal" class="input mb-3">
+                <input type="text" id="date" v-model="cari_nama" autocomplete="off" placeholder="Nama tamu..." class="input mb-3">
             </div>
             <!-- DATA PEMESANAN MULAI DARI SINI -->
             <div v-for="booking in filterdata" :key="booking.id_transaksi" class="card mt-2">
@@ -335,7 +335,7 @@ export default {
         return {
             bookingdata: {},
             cari_id: '',
-            cari_tanggal: '',
+            cari_nama: '',
             nama_tamu: '',
             email: '',
             tgl_pesan: '',
@@ -355,8 +355,10 @@ export default {
     computed: {
         filterdata() {
             let filtered = this.bookingdata
-            if (this.cari_tanggal) {
-                filtered = filtered.filter(booking => booking.check_in === this.cari_tanggal)
+            if (this.cari_nama) {
+                filtered = filtered.filter(booking => booking.nama_tamu.toString().toLowerCase().includes(this.cari_nama.toLowerCase()))
+            } else {
+                filtered = false
             }
             return filtered
         }
@@ -449,7 +451,7 @@ export default {
                                 title: 'Success logout!',
                                 icon: 'success'
                             })
-                            location.href='/login'
+                            location.href = '/login'
                         }
                     }
                 )
