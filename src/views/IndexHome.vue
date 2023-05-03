@@ -18,10 +18,10 @@
                                     <div class="col-md-7 col-lg-6 ">
                                         <div class="detail-box">
                                             <h1>
-                                                Hotel Cihuy
+                                                Hotel Wikusama
                                             </h1>
                                             <p>
-                                                Cihuy Hotel was established in 1991 and stands as the top of
+                                                Wikusama Hotel was established in 1991 and stands as the top of
                                                 the line 4 star luxury business hotels in Mars. This hotel
                                                 in Mars is near the Mars Convention Center / JCC, consisting of 477
                                                 spacious guest rooms and suites which reflect the spacious grandeur of its
@@ -29,7 +29,7 @@
                                                 level of service
                                             </p>
                                             <div class="btn-box">
-                                                <a href="" class="btn1">
+                                                <a href="/room" class="btn1">
                                                     Order Now
                                                 </a>
                                             </div>

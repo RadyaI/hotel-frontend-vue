@@ -5,7 +5,7 @@
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
                     <a class="navbar-brand" href="index.html">
                         <span>
-                            Cihuy
+                            Wikusama
                         </span>
                     </a>
 

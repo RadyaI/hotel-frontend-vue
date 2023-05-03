@@ -10,7 +10,7 @@
                     <nav class="navbar navbar-expand-lg custom_nav-container ">
                         <a class="navbar-brand" href="index.html">
                             <span>
-                                Cihuy
+                                Wikusama
                             </span>
                         </a>
 
@@ -357,9 +357,7 @@ export default {
             let filtered = this.bookingdata
             if (this.cari_nama) {
                 filtered = filtered.filter(booking => booking.nama_tamu.toString().toLowerCase().includes(this.cari_nama.toLowerCase()))
-            } else {
-                filtered = false
-            }
+            } 
             return filtered
         }
     },

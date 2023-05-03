@@ -10,7 +10,7 @@
                     <nav class="navbar navbar-expand-lg custom_nav-container ">
                         <a class="navbar-brand" href="index.html">
                             <span>
-                                Cihuy
+                                Wikusama
                             </span>
                         </a>
 
@@ -170,7 +170,8 @@
         <h2 class="mt-3" style="font-family:'Times New Roman';" align="center">Confirmed</h2>
         <div class="container">
             <div class="input-container mt-2">
-                <input type="text" id="date" v-model="cari_nama" class="input mb-3" placeholder="Cari nama...">
+                <input type="text" id="date" v-model="cari_nama" class="input mb-3" autocomplete="off"
+                    placeholder="Cari nama...">
             </div>
             <!-- DATA PEMESANAN MULAI DARI SINI -->
             <div v-for="booking in filterdata" :key="booking.id_transaksi" class="card mt-2">
@@ -355,14 +356,16 @@ export default {
             let filter_data = this.confirmed_data
             if (this.cari_nama) {
                 filter_data = filter_data.filter(booking => booking.nama_tamu.toString().toLowerCase().includes(this.cari_nama.toLowerCase()))
+            } else {
+                filter_data = false
             }
 
             return filter_data
         }
     },
     methods: {
-        checkkamar: function() {
-            if(this.confirmed_data.filter((kamar) => kamar.no_kamar === this.no_kamar).length > 0 ) {
+        checkkamar: function () {
+            if (this.confirmed_data.filter((kamar) => kamar.no_kamar === this.no_kamar).length > 0) {
                 this.showalert = true //Muncul alert
             } else {
                 this.showalert = false
@@ -406,7 +409,7 @@ export default {
                     if (checkin) {
                         let data = {
                             no_kamar: this.no_kamar,
-                            id_transaksi: this.id_transaksi
+                            // id_transaksi: this.id_transaksi
                         }
                         axios.put('http://localhost:8000/api/checkin/' + this.id_transaksi, data)
                             .then(
@@ -421,20 +424,27 @@ export default {
                                     }, 1200);
                                 }
                             )
+                            .catch((error) => {
+                                if (error.response && error.response.status === 422) {
+                                    console.log('error mass')
+                                    swal({
+                                        title: 'Room number is already taken',
+                                        icon: 'error',
+                                        buttons: true
+                                    });
+                                }
+                            });
                     }
                 }
             )
-                .catch(
-                    (err) => {
-                        console.log(err)
-                        swal({
-                            icon: 'error',
-                            title: 'Failed Check-In',
-                            buttons: true
-                        })
-
-                    }
-                )
+                .catch((error) => {
+                    console.log(error)
+                    swal({
+                        icon: 'error',
+                        title: 'Failed',
+                        buttons: true
+                    })
+                });
         },
         logout() {
             swal({
@@ -452,7 +462,7 @@ export default {
                                 title: 'Success logout!',
                                 icon: 'success'
                             })
-                            location.href='/login'
+                            location.href = '/login'
                         }
                     }
                 )

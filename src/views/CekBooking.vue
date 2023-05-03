@@ -10,7 +10,7 @@
                     <nav class="navbar navbar-expand-lg custom_nav-container ">
                         <a class="navbar-brand" href="index.html">
                             <span>
-                                Cihuy
+                                Wikusama
                             </span>
                         </a>
 
@@ -127,7 +127,8 @@
                 </div>
                 <div class="container">
                     <div class="input-container mt-2">
-                        <input type="number" id="date" v-model="cari_nama" class="input mb-3" placeholder="Cari ID...">
+                        <input type="email" id="date" v-model="cari_nama" class="input mb-3" autocomplete="off"
+                            placeholder="Cari Email...">
                     </div>
                     <!-- DATA PEMESANAN MULAI DARI SINI -->
                     <div v-for="booking in filterdata" :key="booking.id_transaksi" class="card mt-2">
@@ -152,7 +153,7 @@
                                 <span v-else>Status: <span class="text-warning">Belum bisa di gunakan</span></span>
                             </p> -->
                             <div class="btn-group">
-                                <router-link :to="{path: '/cetak/' + booking.nama_tamu}" class="btn">Print</router-link>
+                                <router-link :to="{ path: '/cetak/' + booking.nama_tamu }" class="btn">Print</router-link>
                                 <!-- <button class="btn btn-outline-dark" @click="detailbooking(booking)" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">Print</button> -->
                                 <!-- <button class="btn btn-outline-danger" @click="checkout(booking)">Check-Out</button> -->
@@ -213,14 +214,17 @@ export default {
         filterdata() {
             let filter_data = this.ongoing_data
             if (this.cari_nama) {
-                filter_data = filter_data.filter(booking => booking.id_transaksi.toString().toLowerCase().includes(this.cari_nama.toLowerCase()))
+                filter_data = filter_data.filter(booking =>
+                    booking.email.toString().toLowerCase().includes(this.cari_nama.toLowerCase()) &&
+                    (booking.status === 'dikonfirmasi' || booking.status === 'dipesan')
+                )
             } else {
                 filter_data = false
             }
             return filter_data
         }
     },
-    created(){
+    created() {
         this.getdata()
     },
     methods: {
