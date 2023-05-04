@@ -32,10 +32,11 @@
                                                             autocomplete="off">
                                                         <i class="input-icon uil uil-lock-alt"></i>
                                                     </div>
-                                                    <input type="submit" class="btn mt-4">
+                                                    <!-- <input type="submit" class="btn mt-4"> -->
+                                                    <button type="submit" class="tombol mt-3"><span></span>Login</button>
                                                     <!-- <a href="#" class="btn mt-4">submit</a> -->
                                                 </form>
-                                                <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your
+                                                <p class="mb-0 mt-2 text-center"><a href="#0" class="link">Forgot your
                                                         password?</a></p>
                                             </div>
                                         </div>
@@ -118,6 +119,68 @@ export default {
 </script>
 
 <style>
+.tombol {
+    padding: 0.9em 1.8em;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 4px;
+    color: transparent;
+    border: 3px solid #ff0;
+    font-size: 14px;
+    position: relative;
+    font-family: inherit;
+    background: transparent;
+}
+
+.tombol::before {
+    content: "login";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #363636;
+    color: #ff0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.tombol:hover::before {
+    left: 100%;
+    transform: scale(0) rotateY(360deg);
+    opacity: 0;
+}
+
+.tombol::after {
+    content: "Now";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #363636;
+    color: #ff0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+    transform: scale(0) rotateY(0deg);
+    opacity: 0;
+}
+
+.tombol:hover::after {
+    left: 0;
+    transform: scale(1) rotateY(360deg);
+    opacity: 1;
+}
+
+
+
+
+
+
 /* Please ❤ this if you like it! */
 
 
@@ -425,7 +488,7 @@ h6 span {
 }
 
 @media print {
-    .btn{
+    .btn {
         display: none;
     }
 }
