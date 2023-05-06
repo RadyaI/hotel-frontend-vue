@@ -1,5 +1,5 @@
 # hotelvue
-This hotel backend is made by Muhammad Radya Iftikhar heh <br>
+This hotel frontend is made by Muhammad Radya Iftikhar heh <br>
 ## Project setup
 ```
 npm install
