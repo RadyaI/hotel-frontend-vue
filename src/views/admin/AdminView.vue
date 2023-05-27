@@ -309,9 +309,15 @@ export default {
     },
     mounted() {
         this.data_edit()
+        // this.auth()
     },
     methods: {
+        auth(){
+            const token = localStorage.getItem('token')
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+        },
         datauser() {
+            this.auth()
             axios.get('http://localhost:8000/api/getuser')
                 .then(({ data }) => {
                     console.log(data)
@@ -324,6 +330,7 @@ export default {
                 )
         },
         save() {
+            this.auth()
             axios.post('http://localhost:8000/api/createuser', this.user)
                 .then(
                     ({ data }) => {
@@ -335,6 +342,20 @@ export default {
                         setTimeout(() => {
                             location.reload()
                         }, 1200);
+                    }
+                )
+                .catch(
+                    (error) => {
+                        console.log(error)
+                        if(error.response || error.response.status === 401){
+                            swal({
+                                icon: 'error',
+                                title: 'Mau ngapain coba?'
+                            })
+                            setTimeout(() => {
+                                location.href = '/login'
+                            }, 1200);
+                        }
                     }
                 )
         },
@@ -355,6 +376,7 @@ export default {
             })
         },
         data_edit(s) {
+            this.auth()
             axios.get('http://localhost:8000/api/getuser/' + s.id)
                 .then(
                     (response) => {
@@ -368,6 +390,7 @@ export default {
                 )
         },
         edit() {
+            this.auth()
             let data = {
                 id: this.id,
                 name: this.name,
