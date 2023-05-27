@@ -1,5 +1,6 @@
 # hotelvue
 This hotel frontend is made by Muhammad Radya Iftikhar heh <br>
+Yang mau copas sebaiknya jangan 💀
 ## Project setup
 ```
 npm install
