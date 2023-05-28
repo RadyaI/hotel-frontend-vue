@@ -107,7 +107,7 @@
                                         <i class="fa fa-search" aria-hidden="true"></i>
                                     </button>
                                 </form>
-                                <a href="" class="order_online">
+                                <a href="#" @click="testdoang" class="order_online">
                                     Booking Online
                                 </a>
                             </div>
@@ -294,29 +294,31 @@
                         <img :src="'http://localhost/UKL-Hotel/HotelLaravel_9/public/images/' + foto"
                             style="width:357px;height:250px;" class="card-img-top">
 
-                            <hr style="border: 1px solid black; opacity: 1;">
+                        <hr style="border: 1px solid black; opacity: 1;">
 
-                            <div class="row text-dark">
-                                <div class="col" v-if="this.max == '1-2'"><i class="bi bi-person-fill"></i>Sleeps 2 Guests</div>
-                                <div class="col" v-else><i class="bi bi-person-fill"></i>Sleeps 4 Guests</div>
+                        <div class="row text-dark">
+                            <div class="col" v-if="this.max == '1-2'"><i class="bi bi-person-fill"></i>Sleeps 2 Guests</div>
+                            <div class="col" v-else><i class="bi bi-person-fill"></i>Sleeps 4 Guests</div>
 
-                                <div class="col" v-if="this.max == '1-2'"><i class="bi bi-building-fill"></i> 1 Queen or 2 Single</div>
-                                <div class="col" v-else><i class="bi bi-building-fill"></i> 2 Queen or 4 Single</div>
+                            <div class="col" v-if="this.max == '1-2'"><i class="bi bi-building-fill"></i> 1 Queen or 2
+                                Single</div>
+                            <div class="col" v-else><i class="bi bi-building-fill"></i> 2 Queen or 4 Single</div>
 
-                                <!-- <div class="col"><i class="bi bi-tv-fill"></i> TV</div> -->
-                                <div class="col"><i class="bi bi-cup-hot-fill"></i> Tea/Coffee Making</div>
-                                <div class="col"><i class="bi bi-shop"></i> Mini Bar</div> 
+                            <!-- <div class="col"><i class="bi bi-tv-fill"></i> TV</div> -->
+                            <div class="col"><i class="bi bi-cup-hot-fill"></i> Tea/Coffee Making</div>
+                            <div class="col"><i class="bi bi-shop"></i> Mini Bar</div>
+                        </div>
+                        <br>
+                        <div class="row text-dark">
+                            <div class="col"><i class="bi bi-car-front-fill"></i> Free parking</div>
+                            <div class="col"><i class="bi bi-telephone-fill"></i> Phone</div>
+                            <div class="col"><i class="bi bi-tv-fill"></i> TV</div>
+                            <div class="col" v-if="this.type_kamar == 'Family'"><i class="bi bi-layout-split"></i> Window
                             </div>
-                            <br>
-                            <div class="row text-dark">
-                                <div class="col"><i class="bi bi-car-front-fill"></i> Free parking</div>
-                                <div class="col"><i class="bi bi-telephone-fill"></i> Phone</div>
-                                <div class="col"><i class="bi bi-tv-fill"></i> TV</div>
-                                <div class="col" v-if="this.type_kamar == 'Family'"><i class="bi bi-layout-split"></i> Window</div>
-                                <div class="col"><i class="bi bi-wifi"></i> Free wifi</div>
-                                <div class="col"><i class="bi bi-sun-fill"></i> Free Breakfast</div>
-                                <div class="col"><i class="bi bi-water"></i> Shower</div> 
-                            </div>
+                            <div class="col"><i class="bi bi-wifi"></i> Free wifi</div>
+                            <div class="col"><i class="bi bi-sun-fill"></i> Free Breakfast</div>
+                            <div class="col"><i class="bi bi-water"></i> Shower</div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -416,6 +418,11 @@ export default {
         }
     },
     methods: {
+        testdoang() {
+            swal({
+                icon: 'info'
+            })
+        },
         hitungtotalharga() {
             const start = moment(this.checkin)
             const end = moment(this.checkout)
@@ -457,15 +464,40 @@ export default {
                 jumlah_kamar: this.jumlah_kamar,
                 harga: this.totalharga,
             }
+            swal({
+                icon: 'warning',
+                title: 'Wait a second!',
+                button: false
+            })
             axios.post('http://localhost:8000/api/createtransaksi', data_peminjaman)
                 .then(
                     (response) => {
                         console.log(response)
                         swal({
                             icon: 'success',
-                            title: 'Sukses booking kamar'
-                        })
-                        location.href = '/cetak/' + this.nama_tamu
+                            title: 'details have been sent to your email',
+                            dangerMode: true,
+                            buttons: "Done"
+                        }).then(
+                            (response) => {
+                                if (response) {
+                                    location.href = '/'
+                                }
+                            }
+                        )
+
+                    }
+                )
+                .catch(
+                    (error) => {
+                        if (error.response || error.response.reason === 'kamar') {
+                            swal({
+                                icon: 'error',
+                                title: 'Code: 500',
+                                text: 'Internal server error',
+                                buttons: true
+                            })
+                        }
                     }
                 )
         }

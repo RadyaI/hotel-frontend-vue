@@ -30,10 +30,10 @@ const routes = [
   {
     path: '/admin',
     component: admin,
-    // meta: {
-    //   requiresAuth: true,
-    //   allowedRoles: ['admin']
-    // }
+    meta: {
+      requiresAuth: true,
+      allowedRoles: ['admin']
+    }
   },
   {
     path: '/resepsionis',

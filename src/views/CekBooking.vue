@@ -127,12 +127,24 @@
                 </div>
                 <div class="container">
                     <div class="input-container mt-2">
-                        <input type="email" id="date" v-model="cari_nama" class="input mb-3" autocomplete="off"
-                            placeholder="Cari Email...">
+
+                        <div class="row ">
+                            <div class="col">
+                                <input type="text" id="date" v-model="cari_id" class="mb-5" style="position: ;"
+                                    autocomplete="off" placeholder="Cari id pesanan...">
+                            </div>
+                            <div class="col">
+                                <input type="submit" style="position: absolute;" @click="search_id"
+                                    class="btn btn-outline-dark">
+                            </div>
+                        </div>
+
+
                     </div>
                     <!-- DATA PEMESANAN MULAI DARI SINI -->
-                    <div v-for="booking in filterdata" :key="booking.id_transaksi" class="card mt-2">
-                        <input type="hidden" v-model="id">
+
+                    <div v-for="(booking, number) in filter_data" :key="number" class="card mt-2">
+                        <!-- <input type="hidden" v-model="id"> -->
                         <div class="card-header">
                             {{ booking.tgl_pesan }}
                         </div>
@@ -160,6 +172,7 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- END DATA PEMESANAN -->
                     <br>
                     <br>
@@ -182,6 +195,7 @@
 <script>
 // import navbar from '../components/template/NavBar.vue'
 import axios from 'axios'
+import swal from 'sweetalert'
 // import { filter } from 'vue/types/umd';
 // import moment from 'moment'
 // import swal from 'sweetalert'
@@ -195,7 +209,8 @@ export default {
         return {
             cari_email: '',
             ongoing_data: {},
-            cari_nama: '',
+            filter_data: {},
+            cari_id: '',
             // nama_tamu: '',
             nama_tamu: '',
             email: '',
@@ -211,18 +226,21 @@ export default {
         }
     },
     computed: {
-        filterdata() {
-            let filter_data = this.ongoing_data
-            if (this.cari_nama) {
-                filter_data = filter_data.filter(booking =>
-                    booking.email.toString().toLowerCase().includes(this.cari_nama.toLowerCase()) &&
-                    (booking.status === 'dikonfirmasi' || booking.status === 'dipesan')
-                )
-            } else {
-                filter_data = false
-            }
-            return filter_data
-        }
+        // filterdata() {
+        //     let filter_data = this.ongoing_data
+        //     if (this.cari_nama) {
+        //         filter_data = filter_data.filter(booking =>
+        //             booking.id_transaksi.toString().toLowerCase().includes(this.cari_nama.toLowerCase()) &&
+        //             (booking.status === 'dikonfirmasi' || booking.status === 'dipesan')
+        //         )
+        //     } else {
+        //         filter_data = false
+        //     }
+        //     return filter_data
+        // }
+        
+    },
+    mounted() {
     },
     created() {
         this.getdata()
@@ -238,6 +256,36 @@ export default {
                     }
                 )
         },
+        search_id() {
+            axios.get('http://localhost:8000/api/cekbooking/' + this.cari_id)
+                .then(
+                    ({ data }) => {
+                        console.log(data)
+                        this.filter_data = data
+                    }
+                )
+                .catch(
+                    (error) => {
+                        console.log(error)
+                        if (error.response.status === 500) {
+                            swal({
+                                icon: 'error',
+                                title: 'Isi dulu dong!'
+                            })
+                        } else if (error.response.status === 404) {
+                            swal({
+                                icon: 'error',
+                                title: 'Data tidak di temukan!'
+                            })
+                        } else if(error.response.data.kode === 'dikonfirmasi'){
+                            swal({
+                                icon: 'error',
+                                title: 'Pesanan anda belum di konfirmasi!'
+                            })
+                        }
+                    }
+                )
+        }
     }
 }
 </script>

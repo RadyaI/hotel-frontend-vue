@@ -400,7 +400,14 @@ export default {
                         let data = {
                             id_transaksi: this.id_transaksi,
                             // no_kamar: this.no_kamar
+                            nama_tamu: this.nama_tamu,
+                            email: this.email
                         }
+                        swal({
+                            icon: 'warning',
+                            title: 'Wait a second!',
+                            button: false
+                        })
                         axios.put('http://localhost:8000/api/konfirmasi/' + this.id_transaksi, data)
                             .then(
                                 (response) => {
