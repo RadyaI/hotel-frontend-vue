@@ -149,9 +149,9 @@
                             <li class="nav-item active">
                                 <a class="nav-link" href="/manageroom">manage room</a>
                             </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="/edit_room">Edit Room</a>
-                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/feedback">Feedback</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

@@ -149,9 +149,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/manageroom">manage room</a>
                             </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="/edit_room">Edit Room</a>
-                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/feedback">Feedback</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -312,7 +312,7 @@ export default {
         // this.auth()
     },
     methods: {
-        auth(){
+        auth() {
             const token = localStorage.getItem('token')
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         },
@@ -347,7 +347,7 @@ export default {
                 .catch(
                     (error) => {
                         console.log(error)
-                        if(error.response || error.response.status === 401){
+                        if (error.response || error.response.status === 401) {
                             swal({
                                 icon: 'error',
                                 title: 'Mau ngapain coba?'
@@ -427,7 +427,7 @@ export default {
                                 title: 'Success logout!',
                                 icon: 'success'
                             })
-                            location.href='/login'
+                            location.href = '/login'
                         }
                     }
                 )

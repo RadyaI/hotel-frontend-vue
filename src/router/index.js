@@ -5,10 +5,13 @@ import indexhome from '../views/IndexHome.vue'
 import room from '../views/RoomView.vue'
 import notfound from '../views/NotFound.vue'
 import forbidden from '../views/ForbiddenView.vue'
-import admin from '../views/admin/AdminView.vue'
-import manageroom from '../views/admin/ManageRoom.vue'
 import cetakbukti from '../views/CetakBukti.vue'
 import cekbooking from '../views/CekBooking.vue'
+
+// ADMIN
+import feedback from '../views/admin/Feedback.vue'
+import admin from '../views/admin/AdminView.vue'
+import manageroom from '../views/admin/ManageRoom.vue'
 
 // RESEPSIONIS
 import resepsionis from '../views/resepsionis/ResepView.vue'
@@ -102,6 +105,10 @@ const routes = [
   {
     path: '/checkbooking',
     component: cekbooking
+  },
+  {
+    path: '/feedback',
+    component: feedback
   },
   {
     path: '/login',

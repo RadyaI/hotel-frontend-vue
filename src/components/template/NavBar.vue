@@ -32,6 +32,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/checkbooking">Check Booking</a>
                             </li>
+                            <Feed-Back></Feed-Back>
                         </ul>
                         <div class="user_option">
                             <a href="" class="user_link">
@@ -109,9 +110,12 @@
     </div>
 </template>
 <script>
-
+import FeedBack from '../FeedBack.vue'
 
 export default {
+    components: {
+        'Feed-Back' : FeedBack
+    },
     data() {
         return {
 

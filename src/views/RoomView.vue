@@ -37,6 +37,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/checkbooking">Check Booking</a>
                                 </li>
+                                <Feed-Back></Feed-Back>
                             </ul>
                             <div class="user_option">
                                 <a href="" class="user_link">
@@ -337,10 +338,12 @@ import axios from 'axios'
 // import { filter } from 'vue/types/umd';
 import moment from 'moment'
 import swal from 'sweetalert'
+import FeedBack from '../components/FeedBack.vue'
 // import datepicker from 'vue-datepicker'
 export default {
     components: {
         // 'Nav-Bar' : navbar
+        'Feed-Back' : FeedBack
         // datepicker,
     },
     data() {
