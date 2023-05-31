@@ -237,7 +237,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input type="submit" class="btn btn-primary">
+                            <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
                         </div>
                     </form>
                 </div>
@@ -274,7 +274,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input type="submit" class="btn btn-primary">
+                            <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">
                         </div>
                     </form>
                 </div>
@@ -333,14 +333,17 @@ export default {
             this.auth()
             axios.post('http://localhost:8000/api/createuser', this.user)
                 .then(
-                    ({ data }) => {
-                        console.log(data)
+                    (response) => {
+                        console.log(response.data)
+                        this.data_user.push(response.data)
                         swal({
                             title: 'Sukses tambah user',
                             icon: 'success',
+                            timer: '1100',
+                            button: false
                         })
                         setTimeout(() => {
-                            location.reload()
+                            // location.reload()
                         }, 1200);
                     }
                 )
@@ -353,13 +356,20 @@ export default {
                                 title: 'Mau ngapain coba?'
                             })
                             setTimeout(() => {
-                                location.href = '/login'
+                                // location.href = '/login'
                             }, 1200);
+                        } else {
+                            swal({
+                                icon: 'error',
+                                text: 'Hmm??',
+                                button: true
+                            })
                         }
                     }
                 )
         },
         hapus(s) {
+            let id = s.id
             swal({
                 title: 'Ingin menghapus data user ini?',
                 icon: 'warning',
@@ -368,10 +378,11 @@ export default {
             }).then((hapus) => {
                 if (hapus) {
                     axios.delete('http://localhost:8000/api/deleteuser/' + s.id)
-                    swal({ icon: 'success', title: 'Sukses delete user' })
+                    swal({ icon: 'success', title: 'Sukses delete user' , timer: 1000, button: false})
                     setTimeout(() => {
-                        location.reload()
-                    }, 1200);
+                        // location.reload()
+                        this.data_user = this.data_user.filter(s => s.id !== id)
+                    }, 1000);
                 }
             })
         },
@@ -391,22 +402,27 @@ export default {
         },
         edit() {
             this.auth()
+            let id = this.id
             let data = {
                 id: this.id,
                 name: this.name,
                 email: this.email,
                 level: this.level,
             }
-            axios.put('http://localhost:8000/api/updateuser/' + this.id, data)
+            axios.post('http://localhost:8000/api/updateuser/' + this.id, data)
                 .then(
-                    (data) => {
-                        console.log(data)
+                    (response) => {
+                        console.log(response.data)
+                        const index = this.data_user.findIndex(s => s.id === id)
+                        this.data_user.splice(index, 1, response.data)
                         swal({
                             icon: 'success',
                             title: 'Sukses update data',
+                            buttons: false,
+                            timer: 1200
                         })
                         setTimeout(() => {
-                            location.reload()
+                            // location.reload()
                         }, 1200);
                     }
                 )
