@@ -160,7 +160,27 @@
         <!-- END NAVBAR FOR ADMIN -->
         <h2 class="mt-3" style="font-family:'Times New Roman', Times, serif;" align="center">FeedBack</h2>
         <div class="container">
-           
+
+            <!-- FeedBack -->
+            <div class="card">
+                <div class="card-header">
+                    {{ amount }} Feedback
+                </div>
+                <div class="card-body">
+                    <!-- Start -->
+                    <div class="card mb-4" v-for="data in data_feedback" :key = data.id_feedback>
+                        <div class="card-body" style="cursor: pointer;">
+                            <blockquote class="blockquote mb-0">
+                                <p>{{ data.isi }}.</p>
+                                <footer class="blockquote-footer"> {{ data.nama_tamu }} / {{ data.review }} out of 5</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <!-- End -->
+                </div>
+            </div>
+            <!-- End Feedback -->
+
             <br>
             <br>
             <br>
@@ -173,8 +193,8 @@
 </template>
 <script>
 // import navbar from '../components/template/NavBar.vue'
-// import axios from 'axios'
-// import swal from 'sweetalert'
+import axios from 'axios'
+import swal from 'sweetalert'
 
 export default {
     name: 'App',
@@ -183,9 +203,88 @@ export default {
     },
     data() {
         return {
-        
+            data_feedback: {},
+            amount: ''
         }
     },
-   
+    mounted() {
+        this.getFeedback()
+        this.count()
+        this.lol()
+    },
+    methods: {
+        check_login() {
+            const token = localStorage.getItem('token')
+            axios.defaults.headers.common["Authorization"] = `Bearer${token}`
+        },
+        count(){
+            this.check_login()
+            axios.get('http://localhost:8000/api/countFeedback')
+            .then(
+                (response) => {
+                    console.log(response.data)
+                    this.amount = response.data
+                }
+            )
+        },
+        getFeedback() {
+            this.check_login()
+            axios.get('http://localhost:8000/api/getFeedback')
+                .then(
+                    (response) => {
+                        console.log(response)
+                        this.data_feedback = response.data
+                    }
+                )
+                .catch(
+                    (error) => {
+                        if (error.response.status === 401) {
+                            swal({
+                                icon: 'warning',
+                                title: 'Login dulu -_-',
+                                buttons: ["Malas", "Okk"],
+                                dangerMode: true
+                            }).then(
+                                (response) => {
+                                    if (response) {
+                                        location.href = '/login'
+                                    } else {
+                                        location.href = '/login'
+                                    }
+                                }
+                            )
+                        }
+                    }
+                )
+        },
+        logout() {
+            swal({
+                icon: 'warning',
+                title: 'Ingin Log Out?',
+                dangerMode: true,
+                buttons: true
+            }).then(
+                (response) => {
+                    if (response) {
+                        localStorage.removeItem('token')
+                        localStorage.removeItem('role')
+                        swal({
+                            icon: 'success',
+                            title: 'Success Logout!',
+                            buttons: false
+                        })
+                        setTimeout(
+                            () => {
+                                location.href = '/login'
+                            }, 1200)
+                    }
+                }
+            )
+        },
+        lol() {
+
+        }
+    }
+
 }
 </script>
